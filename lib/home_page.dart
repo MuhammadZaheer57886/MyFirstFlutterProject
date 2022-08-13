@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Jamia Naeemia'),
+        title: const Text('Fareed App'),
       ),
         body: Center(
           // ignore: avoid_unnecessary_containers
