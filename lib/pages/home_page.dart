@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final  int hours = 8;
-  final  String foryou = "Zaheer bro this is";
+  final int hours = 8;
+  final String foryou = "Zaheer bro this is";
 
   const HomePage({Key? key}) : super(key: key);
 
@@ -12,13 +12,20 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Fareed App'),
       ),
-        body: Center(
-          // ignore: avoid_unnecessary_containers
-          child: Container(
-            child: Text('$foryou $hours hours cource of flutter'),
+      body: Center(
+        // ignore: avoid_unnecessary_containers
+        child: Container(
+          child: Text(
+            '$foryou $hours hours cource of flutter',
+            style: const TextStyle(
+              fontSize: 25,
+              color: Colors.teal,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        drawer: const Drawer(),
-      );
+      ),
+      drawer: const Drawer(),
+    );
   }
 }
