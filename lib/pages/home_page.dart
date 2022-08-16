@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
           child: Text(
             '$foryou $hours hours cource of flutter',
             style: const TextStyle(
-              fontSize: 25,
+              fontSize: 20,
               color: Colors.teal,
               fontWeight: FontWeight.bold,
             ),
