@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/drawer.dart';
+
 class HomePage extends StatelessWidget {
   final int hours = 8;
   final String foryou = "Zaheer bro this is";
@@ -25,7 +27,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      drawer: const Drawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
