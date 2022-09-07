@@ -24,17 +24,17 @@ class _HomePageState extends State<HomePage> {
   loaddata() async {
     final catalogJson =
         await rootBundle.loadString("asserts/files/catalog.json");
-    // ignore: unused_local_variable
     final decodedData = jsonDecode(catalogJson);
-    // ignore: avoid_print, unused_local_variable
     var productData = decodedData["products"];
-    // ignore: avoid_print
-    print(productData);
+
+    // ignore: unused_local_variable
+    CatalogModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+        setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummylist = List.generate(5, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fareed App'),
@@ -42,10 +42,10 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
-          itemCount: dummylist.length,
+          itemCount: CatalogModel.items.length,
           itemBuilder: (context, index) {
             return ItemWidget(
-              item: dummylist[index],
+              item: CatalogModel.items[index],
             );
           },
         ),
