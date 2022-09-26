@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_first_app/models/catalog.dart';
+// ignore: unused_import
 import 'package:my_first_app/widget/item_widget.dart';
 
 import 'dart:convert';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loaddata() async {
-    await Future.delayed(const Duration(seconds: 2));
+    //  await Future.delayed(const Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("asserts/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
@@ -42,13 +43,31 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
 
-        child: (CatalogModel.items.isNotEmpty)
-            ? ListView.builder(
+        // ignore: unnecessary_null_comparison
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child : GridTile(
+                      header: Text(item.name),
+                      child:Image.network(item.image)) ,
+                    
+                  );
+                },
                 itemCount: CatalogModel.items.length,
-                itemBuilder: (context, index) => ItemWidget(
-                  item: CatalogModel.items[index],
-                ),
               )
+            //    ListView.builder(
+            //     itemCount: CatalogModel.items.length,
+            //     itemBuilder: (context, index) => ItemWidget(
+            //       item: CatalogModel.items[index],
+            //     ),
+            //   )
             : const Center(
                 child: CircularProgressIndicator(),
               ),
