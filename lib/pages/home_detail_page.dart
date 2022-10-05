@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_app/widget/themes.dart';
-// ignore: unused_import
+
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:my_first_app/models/catalog.dart';
@@ -17,7 +17,29 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: MyTheme.creamColor,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          buttonPadding: EdgeInsets.zero,
+          children: [
+            "\$${catalog.price}".text.bold.xl4.red800.make(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all(MyTheme.darkBluishColor),
+                shape: MaterialStateProperty.all(
+                  const StadiumBorder(),
+                ),
+              ),
+              child: "Buy".text.make(),
+            ).wh(100, 50)
+          ],
+        ).p32(),
+      ),
       body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
             Hero(
@@ -38,7 +60,7 @@ class HomeDetailPage extends StatelessWidget {
                         .color(MyTheme.darkBluishColor)
                         .bold
                         .make(),
-                    catalog.desc.text.textStyle(context.captionStyle).make(),
+                    catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                   ],
                 ).p64(),
               ),

@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 
                 // ignore: unnecessary_null_comparison
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                  const CatalogList().expand()
+                  const CatalogList().py16().expand()
                 else
                   const Center(
                     child: CircularProgressIndicator(),
