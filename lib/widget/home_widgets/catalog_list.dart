@@ -19,18 +19,13 @@ class CatalogList extends StatelessWidget {
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
         return InkWell(
-        
-          onTap:() => Navigator.push(
-            context, 
-          MaterialPageRoute(
-            builder:(context)=> HomeDetailPage(
-            catalog: catalog
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeDetailPage(catalog: catalog),
             ),
           ),
-        ),
-        
-        child: CatalogItem(catalog: catalog),
-        
+          child: CatalogItem(catalog: catalog),
         );
       },
     );
@@ -51,11 +46,8 @@ class CatalogItem extends StatelessWidget {
         child: Row(
       children: [
         Hero(
-
-          tag: Key(catalog.id.toString()),
-          child: CatalogImage(image: catalog.image)
-          
-          ),
+            tag: Key(catalog.id.toString()),
+            child: CatalogImage(image: catalog.image)),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,10 +70,10 @@ class CatalogItem extends StatelessWidget {
                       const StadiumBorder(),
                     ),
                   ),
-                  child: "Buy".text.make(),
+                  child: "Add to Cart".text.make(),
                 )
               ],
-            ).pOnly(right: 8.0)
+            ).pOnly(right: 4.0)
           ],
         ))
       ],
