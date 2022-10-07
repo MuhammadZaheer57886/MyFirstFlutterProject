@@ -1,9 +1,11 @@
-// ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:my_first_app/utils/routes.dart';
+// ignore: unused_import
+import 'package:my_first_app/widget/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
