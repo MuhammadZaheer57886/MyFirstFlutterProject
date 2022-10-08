@@ -35,6 +35,9 @@ class MyTheme {
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
+        // toolbarTextStyle: Theme.of(context).textTheme.copyWith(
+        //   headline6: context.textTheme.headline6?.copyWith(color: Colors.white)
+        // ),
         titleTextStyle: TextStyle(color: Colors.black),
       )
       );

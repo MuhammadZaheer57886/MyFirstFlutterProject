@@ -1,6 +1,18 @@
 import 'dart:convert';
+
 class CatalogModel {
-  static List<Item>  items = items ;
+static final catModel = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => catModel;
+
+  static List<Item> items = items;
+
+//get item by id
+   Item getbyid(int id) =>
+      // ignore: null_closures
+      items.firstWhere((element) => element.id == id, orElse: null);
+// get item by position
+   Item getbyposition(int pos) => items[pos];
 }
 
 class Item {
@@ -11,15 +23,7 @@ class Item {
   final String color;
   final String image;
 
-  Item(
-     this.id,
-     this.name,
-     this.desc,
-     this.price,
-     this.color,
-     this.image
-  );
-
+  Item(this.id, this.name, this.desc, this.price, this.color, this.image);
 
   Item copyWith({
     int? id,
@@ -63,7 +67,8 @@ class Item {
 
   String toJson() => json.encode(toMap());
 
-  factory Item.fromJson(String source) => Item.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Item.fromJson(String source) =>
+      Item.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -73,23 +78,22 @@ class Item {
   @override
   bool operator ==(covariant Item other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.desc == desc &&
-      other.price == price &&
-      other.color == color &&
-      other.image == image;
+
+    return other.id == id &&
+        other.name == name &&
+        other.desc == desc &&
+        other.price == price &&
+        other.color == color &&
+        other.image == image;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      desc.hashCode ^
-      price.hashCode ^
-      color.hashCode ^
-      image.hashCode;
+        name.hashCode ^
+        desc.hashCode ^
+        price.hashCode ^
+        color.hashCode ^
+        image.hashCode;
   }
 }
